@@ -5,6 +5,9 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 5f;
 
+    [SerializeField] MapBounds mapBounds;
+    [SerializeField] float playerRadius = 0.35f;
+
     Rigidbody2D rb;  
     PlayerControls controls; // Input Actions Asset에서 생성한 클래스
 
@@ -15,9 +18,8 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         controls = new PlayerControls();
 
-        // Move 액션 이벤트 연결
         controls.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
-        controls.Player.Move.canceled += ctx => moveInput = Vector2.zero;
+        controls.Player.Move.canceled += _ => moveInput = Vector2.zero;
     }
 
     private void OnEnable()
@@ -32,8 +34,23 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // 이동
-        rb.velocity = moveInput.normalized * moveSpeed;
+        Vector2 direction = moveInput.normalized;
+
+        Vector2 nextPosition = rb.position + direction * moveSpeed * Time.fixedDeltaTime;
+
+        if (mapBounds != null)
+        {
+            float minX = mapBounds.Min.x + playerRadius;
+            float maxX = mapBounds.Max.x - playerRadius;
+
+            float minY = mapBounds.Min.y + playerRadius;
+            float maxY = mapBounds.Max.y - playerRadius;
+
+            nextPosition.x = Mathf.Clamp(nextPosition.x, minX, maxX);
+            nextPosition.y = Mathf.Clamp(nextPosition.y, minY, maxY);
+        }
+
+        rb.MovePosition(nextPosition);
     }
 
     public void IncreaseMoveSpeed(float value)
