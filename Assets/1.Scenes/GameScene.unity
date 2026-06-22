@@ -3357,11 +3357,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 5250632222192209180}
-  spawnInterval: 2
   mainCamera: {fileID: 519420031}
   mapBounds: {fileID: 2147346505}
-  maxSpawnAttempts: 20
   cameraPadding: 1.5
+  maxSpawnAttempts: 20
+  spawnInterval: 2
+  firstDifficultyTime: 5
+  secondDifficultyTime: 10
+  firstSpawnInterval: 2
+  secondSpawnInterval: 1.5
+  thirdSpawnInterval: 1.2
 --- !u!4 &1847395889
 Transform:
   m_ObjectHideFlags: 0

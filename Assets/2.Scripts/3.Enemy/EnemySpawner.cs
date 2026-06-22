@@ -3,15 +3,24 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] Transform player;
-    [SerializeField] float spawnInterval = 2f;
-
     [SerializeField] Camera mainCamera;
     [SerializeField] MapBounds mapBounds;
 
-    [SerializeField] int maxSpawnAttempts = 20;
     [SerializeField] float cameraPadding = 1.5f;
+    [SerializeField] int maxSpawnAttempts = 20;
+    [SerializeField] float spawnInterval = 2f;
 
-    float timer = 0f;
+    [SerializeField] float firstDifficultyTime = 30f;
+    [SerializeField] float secondDifficultyTime = 60f;
+
+    [SerializeField] float firstSpawnInterval = 2f;
+    [SerializeField] float secondSpawnInterval = 1.5f;
+    [SerializeField] float thirdSpawnInterval = 1.2f;
+
+
+    float timer;
+    float difficultyTimer;
+    int spawnCount = 1;
 
     private void Start()
     {
@@ -23,9 +32,17 @@ public class EnemySpawner : MonoBehaviour
         if (GameManager.instance.isGameOver) return;
 
         timer += Time.deltaTime;
+        difficultyTimer += Time.deltaTime;
+
+        UpdateDifficulty();
+
         if (timer >= spawnInterval)
         {
-            SpawnEnemy();
+            for (int i = 0; i < spawnCount; i++)
+            {
+                SpawnEnemy();
+            }
+
             timer = 0f;
         }
     }
@@ -83,6 +100,25 @@ public class EnemySpawner : MonoBehaviour
 
             default: // ¿À¸¥ÂÊ
                 return new Vector2(right, Random.Range(bottom, top));
+        }
+    }
+
+    void UpdateDifficulty()
+    {
+        if (difficultyTimer < firstDifficultyTime)
+        {
+            spawnInterval = 2f;
+            spawnCount = 1;
+        }
+        else if (difficultyTimer < secondDifficultyTime)
+        {
+            spawnInterval = 1.5f;
+            spawnCount = 1;
+        }
+        else
+        {
+            spawnInterval = 1.2f;
+            spawnCount = 2;
         }
     }
 }
