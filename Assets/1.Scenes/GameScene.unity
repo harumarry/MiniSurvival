@@ -1278,7 +1278,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.5
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3358,7 +3358,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 5250632222192209180}
   spawnInterval: 2
-  spawnDistance: 6
+  mainCamera: {fileID: 519420031}
+  mapBounds: {fileID: 2147346505}
+  maxSpawnAttempts: 20
+  cameraPadding: 1.5
 --- !u!4 &1847395889
 Transform:
   m_ObjectHideFlags: 0
@@ -4233,7 +4236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   invincibleTime: 0.5
   hudUI: {fileID: 1646479410}
-  maxHp: 10
+  maxHp: 1000
 --- !u!114 &6858352422568151951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4263,6 +4266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 732795fd133bec244bf0bb8643ac550f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requiredExp: 5
   hudUI: {fileID: 1646479410}
   levelUpUI: {fileID: 1646479411}
 --- !u!1660057539 &9223372036854775807

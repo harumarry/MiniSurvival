@@ -4,7 +4,7 @@ public class PlayerLevel : MonoBehaviour
 {
     int level = 1;
     int currentExp;
-    int requiredExp = 5;
+    [SerializeField] int requiredExp = 5;
 
     [SerializeField] HUDUI hudUI;
     [SerializeField] LevelUpUI levelUpUI;
