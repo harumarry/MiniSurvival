@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 462bb521c9a4d61438e76666d379a93b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  moveSpeed: 2.3
   player: {fileID: 2391636517744577196, guid: 28cac51fe3d5c484789d78112630aef5, type: 3}
 --- !u!114 &5848227681970599407
 MonoBehaviour:
@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f5731ac4eb3b0a479df443c31572fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 10
 --- !u!114 &7221010302139462617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,5 +200,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 430b6ac5e631bae45bfd52eb27d397ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 3
+  maxHp: 20
   expGemPrefab: {fileID: 8106186025834977214, guid: b3c37b851ef441e41a893329e51af1bd, type: 3}

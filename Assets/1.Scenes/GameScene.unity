@@ -1278,7 +1278,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6
+  orthographic size: 6.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3362,8 +3362,8 @@ MonoBehaviour:
   cameraPadding: 1.5
   maxSpawnAttempts: 20
   spawnInterval: 2
-  firstDifficultyTime: 5
-  secondDifficultyTime: 10
+  firstDifficultyTime: 30
+  secondDifficultyTime: 60
   firstSpawnInterval: 2
   secondSpawnInterval: 1.5
   thirdSpawnInterval: 1.2
@@ -4241,7 +4241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   invincibleTime: 0.5
   hudUI: {fileID: 1646479410}
-  maxHp: 1000
+  maxHp: 100
 --- !u!114 &6858352422568151951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4254,9 +4254,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1654df4196846349b8e0d58471b8f5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 1
-  attackInterval: 1
-  attackRange: 5
+  attackDamage: 10
+  attackInterval: 0.7
+  attackRange: 5.5
   projectileCount: 1
   spreadAngle: 15
 --- !u!114 &6858352422568151952

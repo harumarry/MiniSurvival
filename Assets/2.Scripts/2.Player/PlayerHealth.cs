@@ -14,7 +14,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Start()
     {
-        currentHp = maxHp;
+        currentHp = maxHp;       
         hudUI.UpdateHp(currentHp, maxHp);
     }
 
@@ -23,6 +23,7 @@ public class PlayerHealth : MonoBehaviour
         if (isInvincible) return;
 
         currentHp -= damage;
+        currentHp = Mathf.Max(currentHp, 0);
         hudUI.UpdateHp(currentHp, maxHp);
 
         if (currentHp <= 0)

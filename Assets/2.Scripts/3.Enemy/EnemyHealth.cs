@@ -36,7 +36,7 @@ public class EnemyHealth : MonoBehaviour
         if (isDead) return;
 
         isDead = true;
-        GameManager.instance.AddKiillCount();
+        GameManager.instance.AddKillCount();
         PoolManager.instance.ReturnEnemy(gameObject);
 
         Instantiate(expGemPrefab, transform.position, Quaternion.identity);

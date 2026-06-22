@@ -89,16 +89,16 @@ public class EnemySpawner : MonoBehaviour
 
         switch (side)
         {
-            case 0: // À§
+            case 0: // ìœ„
                 return new Vector2(Random.Range(left, right), top);
 
-            case 1: // ¾Æ·¡
+            case 1: // ì•„ëž˜
                 return new Vector2(Random.Range(left, right), bottom);
 
-            case 2: // ¿ÞÂÊ
+            case 2: // ì™¼ìª½
                 return new Vector2(left, Random.Range(bottom, top));
 
-            default: // ¿À¸¥ÂÊ
+            default: // ì˜¤ë¥¸ìª½
                 return new Vector2(right, Random.Range(bottom, top));
         }
     }
@@ -107,17 +107,17 @@ public class EnemySpawner : MonoBehaviour
     {
         if (difficultyTimer < firstDifficultyTime)
         {
-            spawnInterval = 2f;
+            spawnInterval = firstSpawnInterval;
             spawnCount = 1;
         }
         else if (difficultyTimer < secondDifficultyTime)
         {
-            spawnInterval = 1.5f;
+            spawnInterval = secondSpawnInterval;
             spawnCount = 1;
         }
         else
         {
-            spawnInterval = 1.2f;
+            spawnInterval = thirdSpawnInterval;
             spawnCount = 2;
         }
     }

@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
         hudUI.UpdateSurvivalTime(survivalTime);
     }
 
-    public void AddKiillCount()
+    public void AddKillCount()
     {
         if (isGameOver) return;    
 
@@ -47,10 +47,10 @@ public class GameManager : MonoBehaviour
         isGameOver = true;
         Time.timeScale = 0f;
 
-        // ÃÖ°í ±â·Ï ÀúÀå
+        // ìµœê³  ê¸°ë¡ ì €ì¥
         SaveManager.instance.SaveBestTime(survivalTime);
 
-        // °á°ú UI ¾÷µ¥ÀÌÆ®
+        // ê²°ê³¼ UI ì—…ë°ì´íŠ¸
         float finalTime = survivalTime;
         float bestTime = SaveManager.instance.LoadBestTime();
         hudUI.ShowGameOverUI(finalTime, bestTime);

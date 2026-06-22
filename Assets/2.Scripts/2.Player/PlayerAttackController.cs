@@ -23,9 +23,8 @@ public class PlayerAttackController : MonoBehaviour
             if (target != null)
             {
                 Fire(target);
+                fireTimer = 0f;
             }
-            
-            fireTimer = 0f;
         }
     }
 
@@ -56,7 +55,7 @@ public class PlayerAttackController : MonoBehaviour
 
         float startAngle = -spreadAngle * (projectileCount - 1) / 2f;
 
-        for (int i=0; i < projectileCount; i++)
+        for (int i = 0; i < projectileCount; i++)
         {
             float angle = startAngle + spreadAngle * i;
             Vector2 ShotDirection = Quaternion.Euler(0f, 0f, angle) * baseDirection;
@@ -68,7 +67,7 @@ public class PlayerAttackController : MonoBehaviour
                 projectile.Init(ShotDirection, attackDamage);
             }
         }
-   
+
     }
 
     public void IncreaseDamage(float value)

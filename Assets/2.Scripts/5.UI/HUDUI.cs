@@ -3,18 +3,16 @@ using TMPro;
 
 public class HUDUI : MonoBehaviour
 {
-    public TextMeshProUGUI survivalTimeText;
-    public TextMeshProUGUI finalSurvivalTimeText; // 최종 생존 시간
-    public TextMeshProUGUI bestSurvivalTimeText; // 최고 기록
+    [SerializeField] TextMeshProUGUI survivalTimeText;
+    [SerializeField] TextMeshProUGUI finalSurvivalTimeText; // 최종 생존 시간
+    [SerializeField] TextMeshProUGUI bestSurvivalTimeText; // 최고 기록
 
-    public TextMeshProUGUI hpText;
+    [SerializeField] TextMeshProUGUI hpText;
+    [SerializeField] TextMeshProUGUI killCountText;
+    [SerializeField] TextMeshProUGUI levelText;
+    [SerializeField] TextMeshProUGUI expText;
 
-    public TextMeshProUGUI killCountText;
-
-    public TextMeshProUGUI levelText;
-    public TextMeshProUGUI expText;
-
-    public GameObject gameOverPanel;
+    [SerializeField] GameObject gameOverPanel;
 
     public void UpdateSurvivalTime(float time)
     {
