@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: SkillData_ProjectileCountUp
   m_EditorClassIdentifier: 
   skillName: "\uD22C\uC0AC\uCCB4 \uC99D\uAC00"
-  description: "\uD22C\uC0AC\uCCB4 \uAC1C\uC218\uAC00 1 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+  description: "\uD22C\uC0AC\uCCB4 \uAC1C\uC218 +1"
   skillType: 3
   value: 1

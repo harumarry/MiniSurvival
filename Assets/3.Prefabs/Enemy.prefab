@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1674861690420077930}
   - component: {fileID: 4254890653572961833}
   - component: {fileID: 6613231164440435209}
-  - component: {fileID: 5685135059032335489}
+  - component: {fileID: 1678820640602805919}
   - component: {fileID: 6744958684096128017}
   - component: {fileID: 5848227681970599407}
   - component: {fileID: 7221010302139462617}
@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 4484882362227065555}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.6, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -77,9 +77,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.811862, g: 0, b: 1, a: 1}
+  m_SortingOrder: 5
+  m_Sprite: {fileID: -820013473, guid: 2fcca5c6bf50d6f44b510a0813ac3d63, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -116,8 +116,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &5685135059032335489
-BoxCollider2D:
+--- !u!58 &1678820640602805919
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -149,18 +149,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Radius: 0.45
 --- !u!114 &6744958684096128017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,5 +190,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 430b6ac5e631bae45bfd52eb27d397ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 20
   expGemPrefab: {fileID: 8106186025834977214, guid: b3c37b851ef441e41a893329e51af1bd, type: 3}
+  deathEffectPrefab: {fileID: 2764502966678987250, guid: 3f3cbc958aa539c46b2ebfd8010bc892, type: 3}
+  spriteRenderer: {fileID: 4254890653572961833}
+  hitColor: {r: 1, g: 0.85, b: 0.35, a: 1}
+  maxHp: 20
+  hitFlashTime: 0.08

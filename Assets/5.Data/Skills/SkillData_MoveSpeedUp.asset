@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: SkillData_MoveSpeedUp
   m_EditorClassIdentifier: 
   skillName: "\uC774\uB3D9 \uC18D\uB3C4 \uC99D\uAC00"
-  description: "\uC774\uB3D9\uC18D\uB3C4\uAC00 1 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+  description: "\uC774\uB3D9\uC18D\uB3C4 +0.5"
   skillType: 2
   value: 0.5

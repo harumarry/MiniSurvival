@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class LevelUpUI : MonoBehaviour
 {
     [SerializeField] GameObject skillPanel;
-   
+
     [SerializeField] TMP_Text[] skillNameTexts;
     [SerializeField] TMP_Text[] skillDescriptionTexts;
     [SerializeField] Button[] skillButtons;
