@@ -44,6 +44,8 @@ public class GameManager : MonoBehaviour
     {
         if (isGameOver) return;
 
+        AudioManager.instance.PlayGameOver();
+
         isGameOver = true;
         Time.timeScale = 0f;
 

@@ -20,6 +20,7 @@ public class PlayerLevel : MonoBehaviour
 
         if (currentExp >= requiredExp)
         {
+            AudioManager.instance.PlayLevelUp();
             LevelUp();
             levelUpUI.Show();
         }

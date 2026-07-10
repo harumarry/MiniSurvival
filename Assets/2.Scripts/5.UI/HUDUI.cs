@@ -1,17 +1,16 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class HUDUI : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI survivalTimeText;
-    [SerializeField] TextMeshProUGUI finalSurvivalTimeText; // √÷¡æ ª˝¡∏ Ω√∞£
-    [SerializeField] TextMeshProUGUI bestSurvivalTimeText; // √÷∞Ì ±‚∑œ
-
-    [SerializeField] TextMeshProUGUI hpText;
+    [SerializeField] TextMeshProUGUI finalSurvivalTimeText; // ÏµúÏ¢Ö ÏÉùÏ°¥ ÏãúÍ∞Ñ
+    [SerializeField] TextMeshProUGUI bestSurvivalTimeText; // ÏµúÍ≥† Í∏∞Î°ù
     [SerializeField] TextMeshProUGUI killCountText;
     [SerializeField] TextMeshProUGUI levelText;
-    [SerializeField] TextMeshProUGUI expText;
 
+    [SerializeField] Image expBarFill;
     [SerializeField] GameObject gameOverPanel;
 
     public void UpdateSurvivalTime(float time)
@@ -20,12 +19,7 @@ public class HUDUI : MonoBehaviour
         int seconds = Mathf.FloorToInt(time % 60);
 
         survivalTimeText.text = string.Format("{0:D2}:{1:D2}", minutes, seconds);
-    }
-
-    public void UpdateHp(float currentHp, float maxHp)
-    {
-        hpText.text = "HP  "+ currentHp + "/" + maxHp;
-    }
+    } 
 
     public void UpdateKillCount(int killCount)
     {
@@ -35,7 +29,7 @@ public class HUDUI : MonoBehaviour
     public void UpdateExp(int level, int currentExp, int requiredExp)
     {
         levelText.text = "Lv. " + level;
-        expText.text = "EXP  " + currentExp + " / " + requiredExp;
+        expBarFill.fillAmount = (float)currentExp / requiredExp;
     }
 
     public void ShowGameOverUI(float finalTime, float bestTime)

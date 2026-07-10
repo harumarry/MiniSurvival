@@ -33,6 +33,7 @@ public class LevelUpUI : MonoBehaviour
 
     void SelectSkill(int index)
     {
+        AudioManager.instance.PlaySkillSelect();
         SkillManager.instance.ApplySkill(currentSkills[index]);
         Close();
     }

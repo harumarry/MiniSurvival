@@ -24,15 +24,17 @@ public class EnemyHealth : MonoBehaviour
     public void TakeDamage(float damage)
     {
         if (isDead) return;
-
+     
         currentHp -= damage;
 
         if (currentHp <= 0)
         {
+            AudioManager.instance.PlayEnemyDie();
             Die();
         }
         else
         {
+            AudioManager.instance.PlayEnemyHit();
             StartCoroutine(HitFlashRoutine());
         }
     }

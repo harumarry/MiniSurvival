@@ -4,7 +4,7 @@ using System.Collections;
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] SpriteRenderer spriteRenderer;
-    [SerializeField] HUDUI hudUI;
+    [SerializeField] PlayerHPUI playerHPUI;
 
     [SerializeField] Color hitColor = new Color(1f, 0.35f, 0.35f, 1f);
     [SerializeField] float invincibleTime = 0.5f;
@@ -19,16 +19,18 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHp = maxHp;
         originalColor = spriteRenderer.color;
-        hudUI.UpdateHp(currentHp, maxHp);
+        playerHPUI.UpdateHp(currentHp, maxHp);
     }
 
     public void TakeDamage(int damage)
     {
         if (isInvincible) return;
 
+        AudioManager.instance.PlayPlayerHit();
+
         currentHp -= damage;
         currentHp = Mathf.Max(currentHp, 0);
-        hudUI.UpdateHp(currentHp, maxHp);
+        playerHPUI.UpdateHp(currentHp, maxHp);
 
         if (currentHp <= 0)
         {

@@ -51,6 +51,8 @@ public class PlayerAttackController : MonoBehaviour
 
     void Fire(Transform target)
     {
+        AudioManager.instance.PlayProjectileFire();
+
         Vector2 baseDirection = (target.position - transform.position).normalized;
 
         float startAngle = -spreadAngle * (projectileCount - 1) / 2f;

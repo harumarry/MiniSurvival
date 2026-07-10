@@ -8,6 +8,7 @@ public class ExpGem : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            AudioManager.instance.PlayExpGet();
             PlayerLevel playerLevel = collision.GetComponent<PlayerLevel>();
             playerLevel.AddExp(expAmount);
             Destroy(gameObject);
