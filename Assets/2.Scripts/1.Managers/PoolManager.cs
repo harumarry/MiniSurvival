@@ -1,18 +1,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoolManager : MonoBehaviour
+public class PoolManager : MonoBehaviour // 몬스터를 어떻게 제공하고 관리할 것인가?
 {
     public static PoolManager instance;
 
     [SerializeField] Projectile projectilePrefab;
     [SerializeField] int projectilePoolSize = 20;
 
-    [SerializeField] GameObject enemyPrefab;
+    [SerializeField] GameObject[] enemyPrefabs;
     [SerializeField] int enemyPoolSize = 20;
 
     Queue<Projectile> projectilePool = new Queue<Projectile>();
-    Queue<GameObject> enemyPool = new Queue<GameObject>();
+    Queue<GameObject>[] enemyPools = new Queue<GameObject>[3];
 
     private void Awake()
     {
@@ -71,32 +71,38 @@ public class PoolManager : MonoBehaviour
 
     void CreateEnemyPool()
     {
-        for (int i = 0; i < enemyPoolSize; i++)
+        for (int i = 0; i < enemyPools.Length; i++)
         {
-            GameObject enemy = CreateEnemy();
-            enemyPool.Enqueue(enemy);
-        }
+            enemyPools[i] = new Queue<GameObject>();
+
+            for (int j = 0; j < enemyPoolSize; j++)
+            {
+                GameObject enemy = CreateEnemy((EnemyType)i);
+                enemyPools[i].Enqueue(enemy);
+            }
+        }      
     }
 
-    GameObject CreateEnemy()
+    GameObject CreateEnemy(EnemyType type)
     {
-        GameObject enemy = Instantiate(enemyPrefab, transform);
+        GameObject enemy = Instantiate(enemyPrefabs[((int)type)], transform);
         enemy.SetActive(false);
+        enemy.GetComponent<EnemyHealth>().enemyType = type;
 
         return enemy;
     }
 
-    public GameObject GetEnemy(Vector2 position, Transform target)
+    public GameObject GetEnemy(Vector2 position, Transform target, EnemyType type)
     {
         GameObject enemy;
 
-        if (enemyPool.Count > 0)
+        if (enemyPools[(int)type].Count > 0)
         {
-            enemy = enemyPool.Dequeue();
+            enemy = enemyPools[(int)type].Dequeue();
         }
         else
         {
-            enemy = CreateEnemy();
+            enemy = CreateEnemy(type);
         }
 
         enemy.transform.position = position;
@@ -117,9 +123,9 @@ public class PoolManager : MonoBehaviour
         return enemy;
     }
 
-    public void ReturnEnemy(GameObject enemy)
+    public void ReturnEnemy(GameObject enemy, EnemyType type)
     {
         enemy.SetActive(false);
-        enemyPool.Enqueue(enemy);
+        enemyPools[(int)type].Enqueue(enemy);
     }
 }

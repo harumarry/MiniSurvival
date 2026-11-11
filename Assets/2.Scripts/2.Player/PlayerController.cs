@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float playerRadius = 0.35f;
 
     Rigidbody2D rb;  
-    PlayerControls controls; // Input Actions Asset¿¡¼­ »ı¼ºÇÑ Å¬·¡½º
+    PlayerControls controls; // Input Actions Assetì—ì„œ ìƒì„±í•œ í´ë˜ìŠ¤
 
     Vector2 moveInput;
 
@@ -34,10 +34,12 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // ìºë¦­í„° ì´ë™
         Vector2 direction = moveInput.normalized;
 
         Vector2 nextPosition = rb.position + direction * moveSpeed * Time.fixedDeltaTime;
 
+        // ìºë¦­í„° ì´ë™ êµ¬ì—­ ì œí•œ
         if (mapBounds != null)
         {
             float minX = mapBounds.Min.x + playerRadius;

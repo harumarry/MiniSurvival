@@ -1,6 +1,7 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class EnemySpawner : MonoBehaviour
+public class EnemySpawner : MonoBehaviour // 언제, 어떤 몬스터를 얼마나 자주 등장시킬 것인가?
 {
     [SerializeField] Transform player;
     [SerializeField] Camera mainCamera;
@@ -10,20 +11,25 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] int maxSpawnAttempts = 20;
     [SerializeField] float spawnInterval = 2f;
 
-    [SerializeField] float firstDifficultyTime = 30f;
-    [SerializeField] float secondDifficultyTime = 60f;
+    [SerializeField] float firstDifficultyTime = 60f;
+    [SerializeField] float secondDifficultyTime = 120f;
+    [SerializeField] float thirdDifficultyTime = 180f;
 
     [SerializeField] float firstSpawnInterval = 2f;
-    [SerializeField] float secondSpawnInterval = 1.5f;
-    [SerializeField] float thirdSpawnInterval = 1.2f;
-
+    [SerializeField] float secondSpawnInterval = 1.7f;
+    [SerializeField] float thirdSpawnInterval = 1.5f;
+    [SerializeField] float FourthSpawnInterval = 1.3f;
 
     float timer;
-    float difficultyTimer;
     int spawnCount = 1;
+
+    int normalSpawnRate;
+    int fastSpawnRate;
+    int tankSpawnRate;
 
     private void Start()
     {
+        UpdateDifficulty();
         SpawnEnemy();
     }
 
@@ -32,7 +38,6 @@ public class EnemySpawner : MonoBehaviour
         if (GameManager.instance.isGameOver) return;
 
         timer += Time.deltaTime;
-        difficultyTimer += Time.deltaTime;
 
         UpdateDifficulty();
 
@@ -57,7 +62,7 @@ public class EnemySpawner : MonoBehaviour
 
             if (!IsInsideMap(spawnPos)) continue;
 
-            PoolManager.instance.GetEnemy(spawnPos, player);
+            PoolManager.instance.GetEnemy(spawnPos, player, SelectEnemyType());
             return;
         }
     }
@@ -70,6 +75,7 @@ public class EnemySpawner : MonoBehaviour
                 position.y <= mapBounds.Max.y);
     }
 
+    // 카메라 밖 몬스터 스폰 위치 랜덤 설정
     Vector2 GetRandomPositionOutsideCamera()
     {
         Vector2 camPos = mainCamera.transform.position;
@@ -103,22 +109,53 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    // 구간별 난이도 설정
     void UpdateDifficulty()
     {
-        if (difficultyTimer < firstDifficultyTime)
+        if (GameManager.instance.survivalTime < firstDifficultyTime) // 0 ~ 1분
         {
             spawnInterval = firstSpawnInterval;
             spawnCount = 1;
+
+            normalSpawnRate = 100;
+            fastSpawnRate = 0;
+            tankSpawnRate = 0;
         }
-        else if (difficultyTimer < secondDifficultyTime)
+        else if (GameManager.instance.survivalTime < secondDifficultyTime) // 1 ~ 2분
         {
             spawnInterval = secondSpawnInterval;
-            spawnCount = 1;
+            spawnCount = 2;
+
+            normalSpawnRate = 75;
+            fastSpawnRate = 25;
+            tankSpawnRate = 0;
         }
-        else
+        else if (GameManager.instance.survivalTime < thirdDifficultyTime) // 2 ~ 3분
         {
             spawnInterval = thirdSpawnInterval;
             spawnCount = 2;
+
+            normalSpawnRate = 60;
+            fastSpawnRate = 25;
+            tankSpawnRate = 15;
         }
+        else                                            // 3 ~ 4분
+        {
+            spawnInterval = FourthSpawnInterval;
+            spawnCount = 3;
+
+            normalSpawnRate = 45;
+            fastSpawnRate = 35;
+            tankSpawnRate = 20;
+        }
+    }
+
+    EnemyType SelectEnemyType()
+    {
+        int num = Random.Range(0, 100);
+
+        if (num < normalSpawnRate) return EnemyType.Normal;
+        else if (num < normalSpawnRate + fastSpawnRate) return EnemyType.Fast;
+        else return EnemyType.Tank;
     }
 }

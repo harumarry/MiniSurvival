@@ -21,6 +21,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioClip skillSelectClip;
     [SerializeField] AudioClip gameOverClip;
     [SerializeField] AudioClip projectileFireClip;
+    [SerializeField] AudioClip victoryClip;
 
     float enemyHitCooldown = 0.05f;
     float lastEnemyHitTime;
@@ -90,6 +91,11 @@ public class AudioManager : MonoBehaviour
     public void PlayProjectileFire()
     {
         PlaySfx(projectileFireClip, 0.3f);
+    }
+
+    public void PlayVictory()
+    {
+        PlaySfx(victoryClip, 0.5f);
     }
 
     void PlaySfx(AudioClip clip, float volume)

@@ -15,6 +15,8 @@ public class EnemyHealth : MonoBehaviour
     float currentHp;
     bool isDead;
 
+    [HideInInspector] public EnemyType enemyType;
+
     private void Awake()
     {
         originalColor = spriteRenderer.color;
@@ -57,7 +59,7 @@ public class EnemyHealth : MonoBehaviour
         Instantiate(deathEffectPrefab, transform.position, Quaternion.identity);
         Instantiate(expGemPrefab, transform.position, Quaternion.identity);
 
-        PoolManager.instance.ReturnEnemy(gameObject);
+        PoolManager.instance.ReturnEnemy(gameObject, enemyType);
     }
     
     IEnumerator HitFlashRoutine()

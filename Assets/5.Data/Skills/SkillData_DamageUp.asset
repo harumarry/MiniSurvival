@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: SkillData_DamageUp
   m_EditorClassIdentifier: 
   skillName: "\uACF5\uACA9\uB825 \uC99D\uAC00"
-  description: "\uACF5\uACA9\uB825 +3\n"
+  description: "\uACF5\uACA9\uB825 +2\n"
   skillType: 0
-  value: 3
+  value: 2
