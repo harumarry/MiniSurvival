@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape) &&
+        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) &&
             !readyPanel.activeSelf && !skillPanel.activeSelf && !victoryPanel.activeSelf && !gameOverPanel.activeSelf)
         {
             if (pausedPanel.activeSelf)
